@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt" xlms:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades: Index</title>
+</head>
+<body>
+    <h1>Atividades: Index</h1>
+    <ul>
+        <li>
+            <a th:href="@{/atividades/nova.html}">Nova</a>
+        </li>
+        <li>
+            <a th:href="@{/atividades/listar.html}">Listar</a>
+        </li>
+    </ul>
+    <p th:text="@{2+5}"></p>
+</body>
+</html>
