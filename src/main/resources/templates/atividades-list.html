@@ -16,13 +16,20 @@
                 <th>ID</th>
                 <th>Título</th>
                 <th>Tomatos</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="atividade : ${atividades}" th:object="${atividade}">
-                <td th:text="*{id}"> ID</td>
+                <td> 
+                    <a th:href="@{/atividades/editar/{id}(id=*{id})}"  th:text="*{id}">ID</a> 
+                </td>
                 <td th:text="*{titulo}"> Título</td>
                 <td th:text="*{tomatos}"> Tomatos</td>
+                <td> 
+                    <a th:href="@{/atividades/excluir/{id}(id=*{id})}">🗑</a> 
+                    <a th:href="@{/atividades/editar/{id}(id=*{id})}">✎</a> 
+                </td>
             </tr>
         </tbody>
     </table>

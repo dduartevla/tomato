@@ -12,10 +12,12 @@
         <div>
             <label for="titulo">Título</label>
             <input type="text" th:field="*{titulo}" id="titulo">
+            <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
         </div>
         <div>
             <label for="tomatos">Tomatos</label>
             <input type="number" th:field="*{tomatos}" id="tomatos">
+            <strong th:if="${#fields.hasErrors('tomatos')}" th:errors="*{tomatos}"></strong>
         </div>             
         <input type="submit" value="Nova Atividade">
         <input type="reset" value="Limpar">
