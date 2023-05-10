@@ -34,6 +34,7 @@ public class AtividadeController {
     public ModelAndView novaForm(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("atividades-form.html");
+        mv.addObject("atividade", new Atividade());
         return mv;
     }
 
