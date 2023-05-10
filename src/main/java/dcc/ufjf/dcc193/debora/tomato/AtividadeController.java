@@ -30,5 +30,12 @@ public class AtividadeController {
         return mv;
     }
 
+    @GetMapping("/atividades/nova.html")
+    public ModelAndView novaForm(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("atividades-form.html");
+        return mv;
+    }
+
 
 }
