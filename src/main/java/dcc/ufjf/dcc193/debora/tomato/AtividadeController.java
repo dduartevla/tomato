@@ -7,20 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/atividades")
 public class AtividadeController {
 
     @Autowired
     AtividadeRepository repAtv;
 
-    @GetMapping({"/atividades","/atividades/","/atividades/index.html"})
+    @GetMapping({"/atividades/","/atividades/index.html"})
     public String index(){
         return "atividades-index.html";
     }
 
-    @GetMapping("/atividades/listar.html")
+    @GetMapping("/listar.html")
     public ModelAndView listar(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("atividades-list.html");
@@ -37,7 +39,7 @@ public class AtividadeController {
         return mv;
     }
 
-    @GetMapping("/atividades/nova.html")
+    @GetMapping("/nova.html")
     public ModelAndView novaForm(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("atividades-form.html");
@@ -45,7 +47,7 @@ public class AtividadeController {
         return mv;
     }
 
-    @PostMapping("/atividades/nova.html")
+    @PostMapping("/nova.html")
     public ModelAndView novaPost(Atividade atividade){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:/atividades/listar.html");

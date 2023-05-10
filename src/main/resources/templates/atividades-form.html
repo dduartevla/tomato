@@ -8,14 +8,14 @@
 </head>
 <body>
     <h1>Atividade: Nova</h1>
-    <form th:action="@{/atividades/nova.html}" method="post">
+    <form th:action="@{/atividades/nova.html}" method="post" th:object="${atividade}">
         <div>
             <label for="titulo">Título</label>
-            <input type="text" th:field="${atividade.titulo}" id="titulo">
+            <input type="text" th:field="*{titulo}" id="titulo">
         </div>
         <div>
             <label for="tomatos">Tomatos</label>
-            <input type="number" th:field="${atividade.tomatos}" id="tomatos">
+            <input type="number" th:field="*{tomatos}" id="tomatos">
         </div>             
         <input type="submit" value="Nova Atividade">
         <input type="reset" value="Limpar">

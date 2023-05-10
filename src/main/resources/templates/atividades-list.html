@@ -19,10 +19,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="atividade : ${atividades}">
-                <td th:text="${atividade.id}"> ID</td>
-                <td th:text="${atividade.titulo}"> Título</td>
-                <td th:text="${atividade.tomatos}"> Tomatos</td>
+            <tr th:each="atividade : ${atividades}" th:object="${atividade}">
+                <td th:text="*{id}"> ID</td>
+                <td th:text="*{titulo}"> Título</td>
+                <td th:text="*{tomatos}"> Tomatos</td>
             </tr>
         </tbody>
     </table>
