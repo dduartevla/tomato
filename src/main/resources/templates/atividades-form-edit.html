@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade: Editar</title>
+</head>
+<body>
+    <h1>Atividade: Editar</h1>
+    <form th:action="@{/atividades/editar/{id}(id=*{id})}" th:object="${atividade}" method="POST">
+        <div>
+        <input type="hidden" th:field="*{id}" />
+            <label>Título: <input type="text" th:field="*{titulo}" /></label>
+            <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
+        </div>
+        <div>
+            <label>Tomatos: <input type="number" th:field="*{tomatos}" /></label>
+            <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{tomatos}"></strong>
+            <input type="submit" />
+            <input type="reset" />
+        </div>
+    </form>
+</body>
+</html>
