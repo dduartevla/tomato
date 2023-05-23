@@ -20,7 +20,7 @@ public class AtividadeController {
     @Autowired
     AtividadeRepository repAtv;
 
-    @GetMapping({"/atividades/","/atividades/index.html"})
+    @GetMapping({"","/","/index.html"})
     public String index(){
         return "atividades-index.html";
     }
