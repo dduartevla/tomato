@@ -2,11 +2,13 @@ package dcc.ufjf.dcc193.debora.tomato;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,5 +66,37 @@ public class AtividadeController {
         //System.out.println("nova Atividade criada: "+ atividade);
         mv.addObject("atividade", new Atividade());
         return mv;    
+    }
+
+    @GetMapping("/editar/{id}")
+    ModelAndView editarForm(@PathVariable Long id){
+        ModelAndView mv = new ModelAndView();
+        Optional<Atividade> opcional = repAtv.findById(id);
+        if (opcional.isPresent()) {
+            mv.setViewName("atividades-form-edit.html");
+            mv.addObject("atividade", opcional.get());
+            return mv;
+        }
+        mv.setViewName("redirect:/atividades/listar.html");
+        return mv;
+    }
+
+    @PostMapping("/editar/{id}")
+    ModelAndView editarFormPost(@PathVariable Long id, @Valid Atividade atividade, BindingResult binding){
+        ModelAndView mv = new ModelAndView();
+        if (binding.hasErrors()) {
+            mv.setViewName("atividades-form-edit.html");
+            mv.addObject("atividade", atividade);
+            return mv;
+        }
+        repAtv.save(atividade);
+        mv.setViewName("redirect:/atividades/listar.html");
+        return mv;
+    }
+
+    @GetMapping("/excluir/{id}")
+    String excluir(@PathVariable Long id){
+        repAtv.deleteById(id);    
+        return "redirect:/atividades/listar.html";
     }
 }
