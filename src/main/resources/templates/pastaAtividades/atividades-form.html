@@ -4,7 +4,7 @@
     
 <body>
     <header th:replace="layout-padrao.html::header(titulo='Atividades: Nova')"/>
-    <nav th:replace="atividades-index.html::nav"/>
+    <nav th:replace="pastaAtividades/atividades-index.html::nav"/>
     <form th:action="@{/atividades/nova.html}" method="post" th:object="${atividade}">
         <div>
             <label for="titulo">Título</label>

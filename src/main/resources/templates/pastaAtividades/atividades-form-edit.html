@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade: Editar</title>
-</head>
+<head th:replace="layout-padrao.html::head(titulo='Atividades: Editar')"/>
 <body>
-    <h1>Atividade: Editar</h1>
+    <header th:replace="layout-padrao.html::header(titulo='Atividades: Editar')"/>
+    <nav th:replace="pastaAtividades/atividades-index.html::nav"/>
     <form th:action="@{/atividades/editar/{id}(id=*{id})}" th:object="${atividade}" method="POST">
         <div>
         <input type="hidden" th:field="*{id}" />

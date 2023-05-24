@@ -24,13 +24,13 @@ public class AtividadeController {
 
     @GetMapping({"","/","/index.html"})
     public String index(){
-        return "atividades-index.html";
+        return "pastaAtividades/atividades-index.html";
     }
 
     @GetMapping("/listar.html")
     public ModelAndView listar(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("atividades-list.html");
+        mv.setViewName("pastaAtividades/atividades-list.html");
         List<Atividade> atividades = repAtv.findAll();
         /*{
             {
@@ -47,7 +47,7 @@ public class AtividadeController {
     @GetMapping("/nova.html")
     public ModelAndView novaForm(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("atividades-form.html");
+        mv.setViewName("pastaAtividades/atividades-form.html");
         mv.addObject("atividade", new Atividade());
         return mv;
     }
@@ -57,7 +57,7 @@ public class AtividadeController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:/atividades/listar.html");
         if(binding.hasErrors()){
-            mv.setViewName("atividades-form.html");
+            mv.setViewName("pastaAtividades/atividades-form.html");
             mv.addObject("atividade", atividade);
             return mv;
         }
@@ -73,7 +73,7 @@ public class AtividadeController {
         ModelAndView mv = new ModelAndView();
         Optional<Atividade> opcional = repAtv.findById(id);
         if (opcional.isPresent()) {
-            mv.setViewName("atividades-form-edit.html");
+            mv.setViewName("pastaAtividades/atividades-form-edit.html");
             mv.addObject("atividade", opcional.get());
             return mv;
         }
@@ -85,7 +85,7 @@ public class AtividadeController {
     ModelAndView editarFormPost(@PathVariable Long id, @Valid Atividade atividade, BindingResult binding){
         ModelAndView mv = new ModelAndView();
         if (binding.hasErrors()) {
-            mv.setViewName("atividades-form-edit.html");
+            mv.setViewName("pastaAtividades/atividades-form-edit.html");
             mv.addObject("atividade", atividade);
             return mv;
         }
