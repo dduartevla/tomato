@@ -12,4 +12,9 @@ public class UsuarioController {
     public String index(){
         return "usuarios/usuarios-index.html";
     }
+
+    @GetMapping({"","/","/usuariosMenuInicial.html"})
+    public String menuInicial(){
+        return "/menuInicial.html";
+    }
 }
