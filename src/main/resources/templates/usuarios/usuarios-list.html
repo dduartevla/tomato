@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt" xlms:th="http://www.thymeleaf.org">
+
+<head th:replace="layout-padrao.html::head(titulo='Usuários: Listagem')"/>
+
+<body>
+    <header th:replace="layout-padrao.html::header(titulo='Usuários: Listagem')"/>
+    <nav th:replace="usuarios/usuarios-index.html::navu"/>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario : ${usuarios}" th:object="${usuario}">
+                <td> 
+                    <a th:href="@{/atividades/editar/{id}(id=*{id})}"  th:text="*{id}">ID</a> 
+                </td>
+                <td th:text="*{nome}"> Nome</td>
+                <td th:text="*{email}"> Email</td>
+                <td> 
+                    <a th:href="@{/atividades/excluir/{id}(id=*{id})}">🗑</a> 
+                    <a th:href="@{/atividades/editar/{id}(id=*{id})}">✎</a> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <footer th:replace="layout-padrao.html::footer"/>
+</body>
+
+</html>

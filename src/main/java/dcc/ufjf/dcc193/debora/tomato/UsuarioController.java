@@ -1,5 +1,7 @@
 package dcc.ufjf.dcc193.debora.tomato;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -47,5 +49,14 @@ public class UsuarioController {
         repUsuario.save(usuario);
         mv.addObject("atividade", new Atividade());
         return mv;    
+    }
+
+    @GetMapping("/listarUsuarios.html")
+    public ModelAndView listar(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("usuarios/usuarios-list.html");
+        List<Usuario> usuarios = repUsuario.findAll();
+        mv.addObject("usuarios", usuarios);
+        return mv;
     }
 }
