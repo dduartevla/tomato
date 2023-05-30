@@ -18,13 +18,13 @@
         <tbody>
             <tr th:each="usuario : ${usuarios}" th:object="${usuario}">
                 <td> 
-                    <a th:href="@{/atividades/editar/{id}(id=*{id})}"  th:text="*{id}">ID</a> 
+                    <a th:href="@{/atividades/editarUsuario/{id}(id=*{id})}"  th:text="*{id}">ID</a> 
                 </td>
                 <td th:text="*{nome}"> Nome</td>
                 <td th:text="*{email}"> Email</td>
                 <td> 
-                    <a th:href="@{/atividades/excluir/{id}(id=*{id})}">🗑</a> 
-                    <a th:href="@{/atividades/editar/{id}(id=*{id})}">✎</a> 
+                    <a th:href="@{/atividades/excluirUsuario/{id}(id=*{id})}">🗑</a> 
+                    <a th:href="@{/atividades/editarUsuario/{id}(id=*{id})}">✎</a> 
                 </td>
             </tr>
         </tbody>
