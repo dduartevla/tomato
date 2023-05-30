@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue May 30 02:10:39 BRT 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0188-6b10-bbd1-0000013c8d30 
+Tue May 30 02:30:33 BRT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0188-6b22-f44d-000000c97df0 
 on database directory C:\Users\izabe\OneDrive\Documentos\UFJF\2023-1\DCC193 - LABORATÓRIO DE PROGRAMAÇÃO DE\tomato\target\database.db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6d5380c2 
 Loaded from file:/C:/Users/izabe/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Eclipse Adoptium
@@ -11,3 +11,36 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue May 30 02:33:05 BRT 2023:
+Shutting down instance a816c00e-0188-6b22-f44d-000000c97df0 on database directory C:\Users\izabe\OneDrive\Documentos\UFJF\2023-1\DCC193 - LABORATÓRIO DE PROGRAMAÇÃO DE\tomato\target\database.db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6d5380c2 
+Tue May 30 02:33:06 BRT 2023 Thread[Thread-19,5,main] Cleanup action starting
+ERROR XBM0I: Directory target/database.db cannot be removed.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:294)
+	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Monitor.java:663)
+	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(EmbedConnection.java:4014)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:620)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver$LoginCallable.call(InternalDriver.java:400)
+	at org.apache.derby.iapi.jdbc.InternalDriver$LoginCallable.call(InternalDriver.java:376)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Cleanup action completed
+Tue May 30 02:33:06 BRT 2023 Thread[Thread-19,5,main] Cleanup action starting
+ERROR XBM0I: Directory target/database.db cannot be removed.
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:299)
+	at org.apache.derby.shared.common.error.StandardException.newException(StandardException.java:294)
+	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Monitor.java:663)
+	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(EmbedConnection.java:4014)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(EmbedConnection.java:620)
+	at org.apache.derby.iapi.jdbc.InternalDriver.getNewEmbedConnection(InternalDriver.java:630)
+	at org.apache.derby.iapi.jdbc.InternalDriver$LoginCallable.call(InternalDriver.java:400)
+	at org.apache.derby.iapi.jdbc.InternalDriver$LoginCallable.call(InternalDriver.java:376)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Cleanup action completed

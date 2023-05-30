@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt" xlms:th="http://www.thymeleaf.org">
+<head th:replace="layout-padrao.html::head(titulo='Usuários: Novo Usuário')"/>
+
+<body>
+    <header th:replace="layout-padrao.html::header(titulo='Usuários: Novo Usuário')"/>
+    <nav th:replace="usuarios/usuarios-index.html::navu"/>
+    <form th:action="@{/atividades/novoUsuario.html}" method="post" th:object="${usuario}">
+        <div>
+            <label for="nome">Nome</label>
+            <input type="text" th:field="*{nome}" id="nome">
+            <strong th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></strong>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" th:field="*{email}" id="email">
+            <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
+        </div>             
+        <input type="submit" value="Novo Usuário">
+        <input type="reset" value="Limpar">
+    </form>
+    <footer th:replace="layout-padrao.html::footer"/>
+</body>

@@ -7,15 +7,16 @@
     <nav th:fragment="navu">
         <ul>
             <li>
-                <a th:href="@{/atividades/nova.html}">Novo Usuário</a>
+                <a th:href="@{/atividades/novoUsuario.html}">Novo Usuário</a>
             </li>
             <li>
-                <a th:href="@{/atividades/listar.html}">Listar Usuários</a>
+                <a th:href="@{/atividades/listarUsuarios.html}">Listar Usuários</a>
             </li>
             <li>
                 <a th:href="@{/atividades/usuariosMenuInicial.html}">Menu Inicial</a>
             </li>
         </ul>
     </nav>
+    <footer th:replace="layout-padrao.html::footer"/>
 </body>
 </html>
