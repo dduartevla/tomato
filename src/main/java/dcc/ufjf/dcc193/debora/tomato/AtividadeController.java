@@ -27,6 +27,11 @@ public class AtividadeController {
         return "pastaAtividades/atividades-index.html";
     }
 
+    @GetMapping({"","/","/menuInicial.html"})
+    public String menuInicial(){
+        return "/menuInicial.html";
+    }
+
     @GetMapping("/listar.html")
     public ModelAndView listar(){
         ModelAndView mv = new ModelAndView();

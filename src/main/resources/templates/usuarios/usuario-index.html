@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt" xlms:th="http://www.thymeleaf.org">
+<head th:replace="layout-padrao.html::head(titulo='Usuários:Index')"/>
+
+<body>
+    <header th:replace="layout-padrao.html::header(titulo='Usuários: Index')"/>
+    <nav th:fragment="navu">
+        <ul>
+            <li>
+                <a th:href="@{/atividades/nova.html}">Novo Usuário</a>
+            </li>
+            <li>
+                <a th:href="@{/atividades/listar.html}">Listar Usuários</a>
+            </li>
+            <li>
+                <a th:href="@{/atividades/menuInicial.html}">Menu Inicial</a>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
