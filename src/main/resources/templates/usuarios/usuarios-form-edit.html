@@ -13,6 +13,8 @@
         <div>
             <label>Email: <input type="text" th:field="*{email}" /></label>
             <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
+            <label>Senha: <input type="password" th:field="*{senha}" /></label>
+            <strong th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></strong>
             <input type="submit" />
             <input type="reset" />
         </div>

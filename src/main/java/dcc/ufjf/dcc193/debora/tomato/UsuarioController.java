@@ -93,4 +93,9 @@ public class UsuarioController {
         repUsuario.deleteById(id);    
         return "redirect:/atividades/listarUsuarios.html";
     }
+
+    @GetMapping("/login")
+    String login(){
+        return "usuarios-form.html";
+    }
 }

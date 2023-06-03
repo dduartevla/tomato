@@ -15,7 +15,12 @@
             <label for="email">Email</label>
             <input type="text" th:field="*{email}" id="email">
             <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
-        </div>             
+        </div>
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" th:field="*{senha}" id="senha">
+            <strong th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></strong>
+        </div>              
         <input type="submit" value="Novo Usuário">
         <input type="reset" value="Limpar">
     </form>

@@ -14,20 +14,23 @@ public class Usuario {
     @NotBlank(message="Campo obrigatório!")
     String email;
     @NotBlank(message="Campo obrigatório!")
-    String nome;    
+    String nome;
+    @NotBlank(message="Campo obrigatório!")
+    String senha;    
     
     public Usuario() {
-        this(null,null,null);
+        this(null,null,null,null);
     }
 
     public Usuario(String nome) {
-        this(null,nome,null);
+        this(null,null,nome,null);
     }
 
-    public Usuario(Long id, String email, String nome) {
+    public Usuario(Long id, String email, String nome, String senha) {
         this.id = id;
         this.email = email;
         this.nome = nome;
+        this.senha = senha;
     }
 
     @Override
@@ -57,6 +60,14 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     

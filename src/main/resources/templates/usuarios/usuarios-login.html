@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt" xlms:th="http://www.thymeleaf.org">
+<head th:replace="layout-padrao.html::head(titulo='Usuários: Login')"/>
+
+<body>
+    <header th:replace="layout-padrao.html::header(titulo='Usuários: Login')"/>
+    <nav th:replace="usuarios/usuarios-index.html::navu"/>
+    <form th:action="@{/login}" method="post">
+        <div>
+            <label for="email">Email</label>
+            <input type="text" th:field="*{email}" id="email">
+        </div>
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" th:field="*{senha}" id="senha">
+        </div>              
+        <input type="submit" value="Novo Usuário">
+        <input type="reset" value="Limpar">
+    </form>
+    <p>Se não tiver usuário, <a th:href="@{/usuarios/usuarios-form.html}">se cadastre</a>!</p>
+    <footer th:replace="layout-padrao.html::footer"/>
+</body>
