@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,19 +21,22 @@ public class UsuarioController {
 
     @Autowired
     UsuarioRepository repUsuario;
-    
-    @GetMapping({"","/","/usuariosindex.html"})
-    public String index(){
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @GetMapping({ "", "/", "/usuariosindex.html" })
+    public String index() {
         return "usuarios/usuarios-index.html";
     }
 
-    @GetMapping({"","/","/usuariosMenuInicial.html"})
-    public String menuInicial(){
+    @GetMapping({ "", "/", "/usuariosMenuInicial.html" })
+    public String menuInicial() {
         return "/menuInicial.html";
     }
-    
+
     @GetMapping("/novoUsuario.html")
-    public ModelAndView novoUsuarioForm(){
+    public ModelAndView novoUsuarioForm() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("usuarios/usuarios-form.html");
         mv.addObject("usuario", new Usuario());
@@ -40,21 +44,22 @@ public class UsuarioController {
     }
 
     @PostMapping("/novoUsuario.html")
-    public ModelAndView novaPost(@Valid Usuario usuario, BindingResult binding){
+    public ModelAndView novaPost(@Valid Usuario usuario, BindingResult binding) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:/atividades/listarUsuarios.html");
-        if(binding.hasErrors()){
+        if (binding.hasErrors()) {
             mv.setViewName("usuarios/usuarios-form.html");
             mv.addObject("usuario", usuario);
             return mv;
         }
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
         repUsuario.save(usuario);
-        mv.addObject("atividade", new Atividade());
-        return mv;    
+        mv.setViewName("redirect:/login");
+        return mv;
     }
 
     @GetMapping("/listarUsuarios.html")
-    public ModelAndView listar(){
+    public ModelAndView listar() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("usuarios/usuarios-list.html");
         List<Usuario> usuarios = repUsuario.findAll();
@@ -63,7 +68,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/editarUsuario/{id}")
-    ModelAndView editarForm(@PathVariable Long id){
+    ModelAndView editarForm(@PathVariable Long id) {
         ModelAndView mv = new ModelAndView();
         Optional<Usuario> opcional = repUsuario.findById(id);
         if (opcional.isPresent()) {
@@ -76,7 +81,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/editarUsuario/{id}")
-    ModelAndView editarFormPost(@PathVariable Long id, @Valid Usuario usuario, BindingResult binding){
+    ModelAndView editarFormPost(@PathVariable Long id, @Valid Usuario usuario, BindingResult binding) {
         ModelAndView mv = new ModelAndView();
         if (binding.hasErrors()) {
             mv.setViewName("usuarios/usuarios-form-edit.html");
@@ -89,13 +94,18 @@ public class UsuarioController {
     }
 
     @GetMapping("/excluirUsuario/{id}")
-    String excluir(@PathVariable Long id){
-        repUsuario.deleteById(id);    
+    String excluir(@PathVariable Long id) {
+        repUsuario.deleteById(id);
         return "redirect:/atividades/listarUsuarios.html";
     }
 
     @GetMapping("/login")
-    String login(){
+    String login() {
         return "usuarios-form.html";
+    }
+
+    @GetMapping("usuarios-detalhes.html")
+    public String detalhes() {
+        return "usuarios-detalhes.html";
     }
 }

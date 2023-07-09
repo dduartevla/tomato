@@ -4,26 +4,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @NotBlank(message="Campo obrigatório!")
+    @Email(message = "Informar um email válido!")
+    @NotBlank(message = "Campo obrigatório!")
     String email;
-    @NotBlank(message="Campo obrigatório!")
+    @NotBlank(message = "Campo obrigatório!")
     String nome;
-    @NotBlank(message="Campo obrigatório!")
-    String senha;    
-    
+    @NotBlank(message = "Campo obrigatório!")
+    String senha;
+
     public Usuario() {
-        this(null,null,null,null);
+        this(null, null, null, null);
     }
 
     public Usuario(String nome) {
-        this(null,null,nome,null);
+        this(null, null, nome, null);
     }
 
     public Usuario(Long id, String email, String nome, String senha) {
@@ -70,5 +72,4 @@ public class Usuario {
         this.senha = senha;
     }
 
-    
 }

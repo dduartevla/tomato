@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt" xlms:th="http://www.thymeleaf.org">
-<head th:replace="layout-padrao.html::head(titulo='Usuários: Login')"/>
+
+<head th:replace="layout-padrao.html::head(titulo='Usuários: Login')" />
 
 <body>
-    <header th:replace="layout-padrao.html::header(titulo='Usuários: Login')"/>
-    <nav th:replace="usuarios/usuarios-index.html::navu"/>
-    <form th:action="@{/login}" method="post">
+    <header th:replace="layout-padrao.html::header(titulo='Autenticar-se')" />
+    <div th:if="$param.error">
+        <p><strong>Email ou senha errrados!</strong></p>
+    </div>
+    <div th:if="param.logout">
+        <p><strong>Você se deslogou!</strong></p>
+    </div>
+    <form th:action="@{\login}" method="POST">
         <div>
-            <label for="email">Email</label>
-            <input type="text" th:field="*{email}" id="email">
+            <label>Usuário: <input type="text" name="username" /></label>
         </div>
         <div>
-            <label for="senha">Senha</label>
-            <input type="password" th:field="*{senha}" id="senha">
-        </div>              
-        <input type="submit" value="Novo Usuário">
-        <input type="reset" value="Limpar">
+            <labe>Senha: <input type="password" name="password" /></labe>
+        </div>
+        <input type="submit" />
+        <input type="reset" />
     </form>
-    <p>Se não tiver usuário, <a th:href="@{/usuarios/usuarios-form.html}">se cadastre</a>!</p>
-    <footer th:replace="layout-padrao.html::footer"/>
+    <p>Não tem usuário? <a th:href="@{/usuarios/usuarios-form.html}">Se cadastre</a></p>
 </body>

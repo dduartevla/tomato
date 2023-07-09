@@ -1,9 +1,15 @@
 package dcc.ufjf.dcc193.debora.tomato;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -12,20 +18,32 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-        .requestMatchers("/**css").permitAll()
-        .requestMatchers("/usuarios/usuarios-form.html").permitAll()
-        .requestMatchers("/**").authenticated();
-
+                .requestMatchers("/usuarios/usuarios-form.html").permitAll()
+                .anyRequest().authenticated();
         http.formLogin()
-        .loginPage("usuarios/usuarios-login.html")
-        .loginProcessingUrl("/login")
-        .successForwardUrl("/atividades").permitAll();
-
-        http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/atividades")
+                .permitAll();
+        http.logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .permitAll();
         return http.build();
     }
-    
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public static PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
+    }
 }
