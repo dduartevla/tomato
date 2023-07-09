@@ -101,11 +101,11 @@ public class UsuarioController {
 
     @GetMapping("/login")
     String login() {
-        return "usuarios-form.html";
+        return "usuarios/usuarios-login.html";
     }
 
     @GetMapping("usuarios-detalhes.html")
     public String detalhes() {
-        return "usuarios-detalhes.html";
+        return "usuarios/usuarios-detalhes.html";
     }
 }
