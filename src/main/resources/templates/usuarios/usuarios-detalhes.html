@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt" xmls:th="http://www.thymeleaf.org">
+
+<head th:replace="layout-padrao.html::head(titulo='Usuários: Detalhes')" />
+
+<body>
+    <header th:replace="layout-padrao.html::header(titulo='Usuários: Detalhes')" />
+    <nav th:replace="usuarios/usuarios-index.html::navu" />
+    <div sec:authorize="!isAuthenticated()">
+        Você não está autenticado!
+    </div>
+    <section sec:authorize="isAuthenticated()"> Usuário autenticado:
+        <strong sec:authentication="name"></strong>
+        <div>
+            Papéis:
+            <strong sec:authentication="principal.authorities"></strong>
+        </div>
+        <div sec:authorize="hasRole('PREMIUM')">Você tem acesso ao pacote PREMIUM</div>
+        <div sec:authorize="hasRole('ADMIN')">Você é um administrador!</div>
+    </section>
+</body>
+
+</html>
